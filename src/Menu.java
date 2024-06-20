@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
@@ -24,6 +25,7 @@ public class Menu {
             option = sc.nextInt();
 
             if (option == 6) {
+                about();
                 sc.close();
                 System.exit(0);
             }
@@ -32,25 +34,42 @@ public class Menu {
 
                 case 1:
                     //Cadastro
+                    keyPress();
                     break;
                 case 2:
                     //Exibicao
+                    keyPress();
                     break;
                 case 3:
                     //Busca por café
+                    keyPress();
                     break;
                 case 4:
                     //Atualizar
+                    keyPress();
                     break;
                 case 5:
                     //Deletar
-                    break;
-                case 6:
+                    keyPress();
                     break;
                 default:
                     break;
             }
 
+        }
+    }
+
+    public static void about(){
+        System.out.println("Este projeto foi desenvolvido por: Vinícius Gonçalves");
+        System.out.println("https://github.com/viniciusegoncalves");
+    }
+
+    public static void keyPress(){
+        try {
+            System.in.read();
+        }
+        catch (IOException e) {
+            System.out.println("Voce deve pressionar a tecla enter!");
         }
     }
 }
