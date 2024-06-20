@@ -5,6 +5,19 @@ public abstract class Coffee {
     private String name;
     private String brand;
     private Supplier supplier;
+    private String description;
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    private Double price;
+
+    public int getType() {
+        return type;
+    }
+
+    private int type;
 
     public Double getPrice() {
         return price;
@@ -14,8 +27,6 @@ public abstract class Coffee {
         this.price = price;
     }
 
-    private Double price;
-
     public String getDescription() {
         return description;
     }
@@ -23,8 +34,6 @@ public abstract class Coffee {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    private String description;
 
     public int getSerialNumber() {
         return serialNumber;
@@ -58,12 +67,36 @@ public abstract class Coffee {
         this.supplier = supplier;
     }
 
-    public Coffee(int serialNumber, String name, String brand, Supplier supplier, String description, Double price) {
+    public void viewAll() {
+
+        String type = "";
+
+        switch(this.type) {
+            case 1:
+                type = "Café Gourmet";
+                break;
+            case 2:
+                type = "Café Especial";
+                break;
+        }
+
+        System.out.println("\n\n***********************************************************");
+        System.out.println("Lista de Cafés cadastrados:");
+        System.out.println("***********************************************************");
+        System.out.println("Nome do café: " + name);
+        System.out.println("Marca: " + brand);
+        System.out.println("Tipo do café: " + type);
+        System.out.println("Preço da unidade: " + price);
+        System.out.println("Descriçao do produto: " + description);
+
+    }
+
+    public Coffee(int serialNumber, String name, String brand, String description, Double price, int type) {
         this.serialNumber = serialNumber;
         this.name = name;
         this.brand = brand;
-        this.supplier = supplier;
         this.description = description;
         this.price = price;
+        this.type = type;
     }
 }
