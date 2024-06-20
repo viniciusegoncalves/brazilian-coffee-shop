@@ -6,7 +6,17 @@ public abstract class Coffee {
     private String brand;
     private Supplier supplier;
     private String description;
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     private Double price;
+
+    public int getType() {
+        return type;
+    }
+
     private int type;
 
     public Double getPrice() {
@@ -55,6 +65,30 @@ public abstract class Coffee {
 
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
+    }
+
+    public void viewAll() {
+
+        String type = "";
+
+        switch(this.type) {
+            case 1:
+                type = "Café Gourmet";
+                break;
+            case 2:
+                type = "Café Especial";
+                break;
+        }
+
+        System.out.println("\n\n***********************************************************");
+        System.out.println("Lista de Cafés cadastrados:");
+        System.out.println("***********************************************************");
+        System.out.println("Nome do café: " + name);
+        System.out.println("Marca: " + brand);
+        System.out.println("Tipo do café: " + type);
+        System.out.println("Preço da unidade: " + price);
+        System.out.println("Descriçao do produto: " + description);
+
     }
 
     public Coffee(int serialNumber, String name, String brand, String description, Double price, int type) {
