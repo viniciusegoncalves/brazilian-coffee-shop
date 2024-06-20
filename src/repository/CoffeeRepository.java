@@ -8,6 +8,5 @@ public interface CoffeeRepository {
     public void register(Coffee coffee);
     public void update(Coffee coffee);
     public void delete(int serialNumber);
-
-    public void registerSupplier(Supplier supplier);
+    public void searchBySerialNumber(int serialNumber);
 }

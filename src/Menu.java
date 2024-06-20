@@ -1,11 +1,17 @@
+import controller.CoffeeController;
+import model.GourmetCoffee;
+import model.SpecialCoffe;
+
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        int option;
+        CoffeeController coffees = new CoffeeController();
+        String coffeeName, coffeeBrand, coffeeDescription, coffeeAroma;
+        Double coffeePrice;
+        int option, coffeeType, coffeeIntensity;
 
         while (true) {
 
@@ -31,7 +37,40 @@ public class Menu {
             switch (option) {
 
                 case 1:
-                    //Cadastro
+                    System.out.println("Digite o nome do café que deseja cadastrar: ");
+                    sc.skip("\\R?");
+                    coffeeName = sc.nextLine();
+                    System.out.println("Digite a marca do café: ");
+                    sc.skip("\\R?");
+                    coffeeBrand = sc.nextLine();
+                    System.out.println("Informe o preço da unidade: ");
+                    sc.skip("\\R?");
+                    coffeePrice = sc.nextDouble();
+                    System.out.println("Insira uma descriçao para o produto: ");
+                    sc.skip("\\R?");
+                    coffeeDescription = sc.nextLine();
+                    System.out.println("Insira o Aroma do café: ");
+                    sc.skip("\\R?");
+                    coffeeAroma = sc.nextLine();
+                    do {
+                        System.out.println("Para café Gourmet digite 1 ");
+                        System.out.println("Para café Especial digite 2 ");
+                        coffeeType = sc.nextInt();
+                    } while (coffeeType < 1 && coffeeType > 2);
+
+                    switch (coffeeType) {
+                        case 1:
+                            coffees.register(new GourmetCoffee(coffees.generateSerialNumber(), coffeeName,
+                                    coffeeBrand, coffeeAroma, coffeeDescription, coffeePrice, coffeeType));
+                        case 2:
+                            do {
+                                System.out.println("Digite a escala de intensidade de 1 a 5 (do mais fraco ao mais forte amargor) :");
+                                coffeeIntensity = sc.nextInt();
+                            }
+                            while (coffeeIntensity <= 0 || coffeeIntensity > 5);
+                            coffees.register(new SpecialCoffe(coffees.generateSerialNumber(), coffeeName,
+                                    coffeeBrand, coffeeAroma, coffeeIntensity, coffeeDescription, coffeePrice, coffeeType));
+                    }
                     keyPress();
                     break;
                 case 2:
@@ -57,16 +96,15 @@ public class Menu {
         }
     }
 
-    public static void about(){
+    public static void about() {
         System.out.println("Este projeto foi desenvolvido por: Vinícius Gonçalves");
         System.out.println("https://github.com/viniciusegoncalves");
     }
 
-    public static void keyPress(){
+    public static void keyPress() {
         try {
             System.in.read();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Voce deve pressionar a tecla enter!");
         }
     }
