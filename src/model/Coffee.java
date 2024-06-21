@@ -66,6 +66,15 @@ public abstract class Coffee {
         this.supplier = supplier;
     }
 
+    public Coffee(int serialNumber, String name, String brand, String description, Double price, int type) {
+        this.serialNumber = serialNumber;
+        this.name = name;
+        this.brand = brand;
+        this.description = description;
+        this.price = price;
+        this.type = type;
+    }
+
     public void viewAll() {
 
         String type = "";
@@ -88,14 +97,5 @@ public abstract class Coffee {
         System.out.println("Preço da unidade: " + price);
         System.out.println("Descriçao do produto: " + description);
 
-    }
-
-    public Coffee(int serialNumber, String name, String brand, String description, Double price, int type) {
-        this.serialNumber = serialNumber;
-        this.name = name;
-        this.brand = brand;
-        this.description = description;
-        this.price = price;
-        this.type = type;
     }
 }
