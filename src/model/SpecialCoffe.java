@@ -1,8 +1,7 @@
 package model;
 
-import repository.CoffeeRepository;
-
 public class SpecialCoffe extends GourmetCoffee {
+
     private int intensity;
 
     public SpecialCoffe(int serialNumber, String name, String brand,
@@ -15,7 +14,9 @@ public class SpecialCoffe extends GourmetCoffee {
         return intensity;
     }
 
-    public void setIntensity(int intensity) {
-        this.intensity = intensity;
+    @Override
+    public void viewAll() {
+        super.viewAll();
+        System.out.println("Grau de intensidade/Amargor: " + getIntensity() + "/5");
     }
 }

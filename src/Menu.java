@@ -13,8 +13,9 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         CoffeeController coffees = new CoffeeController();
         String coffeeName, coffeeBrand, coffeeDescription, coffeeAroma;
-        Double coffeePrice;
-        int option, coffeeType, coffeeIntensity, serialNumber;
+        Double coffeePrice = 0.0;
+        int option, coffeeType, coffeeIntensity = 0, serialNumber;
+        boolean success = false;
 
 
         //Teste
@@ -69,9 +70,20 @@ public class Menu {
                     System.out.println("Digite a marca do café: ");
                     sc.skip("\\R?");
                     coffeeBrand = sc.nextLine();
-                    System.out.println("Informe o preço da unidade: ");
-                    sc.skip("\\R?");
-                    coffeePrice = sc.nextDouble();
+
+                    while (!success) {
+                        try {
+                            System.out.println("Informe o preço da unidade em reais (R$): ");
+                            sc.skip("\\R?");
+                            coffeePrice = sc.nextDouble();
+                            success = true;
+                        } catch (InputMismatchException e) {
+                            System.out.println("O valor deve ser número e as casas decimais devem ser separadas por ponto (.)\n");
+                            sc.nextLine();
+                        }
+                    }
+
+                    sc.nextLine();
                     System.out.println("Insira uma descriçao para o produto: ");
                     sc.skip("\\R?");
                     coffeeDescription = sc.nextLine();
@@ -91,12 +103,17 @@ public class Menu {
                             break;
                         case 2:
                             do {
-                                System.out.println("Digite a escala de intensidade de 1 a 5 (do mais fraco ao mais forte amargor) :");
-                                coffeeIntensity = sc.nextInt();
+                                try {
+                                    System.out.println("Digite a escala de intensidade de 1 a 5 (do mais fraco ao mais forte amargor) :");
+                                    coffeeIntensity = sc.nextInt();
+                                } catch (InputMismatchException e) {
+                                    System.out.println("O valor deve ser um número inteiro de 1 a 5\n");
+                                    sc.nextLine();
+                                }
                             }
                             while (coffeeIntensity <= 0 || coffeeIntensity > 5);
                             coffees.register(new SpecialCoffe(coffees.generateSerialNumber(), coffeeName,
-                                    coffeeBrand, coffeeAroma, coffeeIntensity, coffeeDescription, coffeePrice, coffeeType));
+                                    coffeeBrand, coffeeAroma, coffeeIntensity, coffeeDescription,coffeePrice, coffeeType));
                             break;
                     }
                     keyPress();
