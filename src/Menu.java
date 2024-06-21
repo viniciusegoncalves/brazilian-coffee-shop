@@ -4,6 +4,7 @@ import model.SpecialCoffe;
 import model.Supplier;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -45,7 +46,14 @@ public class Menu {
             System.out.println("6 - Sair");
             System.out.println("*****************************************************");
 
-            option = sc.nextInt();
+            try {
+                option = sc.nextInt();
+            }
+            catch (InputMismatchException e){
+                System.out.println("Digite valores inteiros!");
+                sc.nextLine();
+                option = 0;
+            }
 
             if (option == 6) {
                 about();
@@ -54,7 +62,6 @@ public class Menu {
             }
 
             switch (option) {
-
                 case 1:
                     System.out.println("Digite o nome do café que deseja cadastrar: ");
                     sc.skip("\\R?");
@@ -99,7 +106,6 @@ public class Menu {
                     keyPress();
                     break;
                 case 3:
-                    ;
                     System.out.println("Digite o serial number do produto: ");
                     serialNumber = sc.nextInt();
                     coffees.searchBySerialNumber(serialNumber);
