@@ -1,7 +1,5 @@
 package model;
 
-import repository.CoffeeRepository;
-
 public class GourmetCoffee extends Coffee {
     private String aroma;
 

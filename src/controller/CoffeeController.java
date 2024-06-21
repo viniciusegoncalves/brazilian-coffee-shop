@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CoffeeController implements CoffeeRepository {
 
-    private ArrayList<Coffee> coffeeList = new ArrayList<Coffee>();
+    private ArrayList<Coffee> coffeeList = new ArrayList<>();
     int number = 0;
 
     @Override
@@ -27,7 +27,6 @@ public class CoffeeController implements CoffeeRepository {
     public void update(Coffee coffee) {
         var searchCoffee = searchOnCollection(coffee.getSerialNumber());
         if (searchCoffee != null) {
-            System.out.println(coffee.getSerialNumber());
             coffeeList.set(coffeeList.indexOf(searchCoffee), coffee);
             System.out.println("A café de serial number: " + coffee.getSerialNumber() + " foi atualizado com sucesso!");
         } else {

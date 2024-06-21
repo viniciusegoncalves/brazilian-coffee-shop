@@ -6,6 +6,7 @@ public abstract class Coffee {
     private String brand;
     private Supplier supplier;
     private String description;
+    private int type;
 
     public void setType(int type) {
         this.type = type;
@@ -16,8 +17,6 @@ public abstract class Coffee {
     public int getType() {
         return type;
     }
-
-    private int type;
 
     public Double getPrice() {
         return price;
