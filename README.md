@@ -2,7 +2,7 @@
 
 Descrição
 
-O Brazilian Coffee Shop é um projeto desenvolvido em Java utilizando os princípios de Programação Orientada a Objetos (POO). O objetivo deste projeto é simular o funcionamento de uma cafeteria, permitindo a gestão de pedidos, produtos, clientes e funcionários.
+O Brazilian Coffee Shop é um projeto desenvolvido em Java utilizando os princípios de Programação Orientada a Objetos (POO). O objetivo deste projeto é simular o funcionamento de uma cafeteria.
 
 Funcionalidades
 
